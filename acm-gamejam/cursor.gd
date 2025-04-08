@@ -7,6 +7,7 @@ var mouse_coordinates
 
 func _ready():
 	update_interactions()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 func _process(delta: float) -> void:
 	mouse_coordinates = get_viewport().get_mouse_position()
