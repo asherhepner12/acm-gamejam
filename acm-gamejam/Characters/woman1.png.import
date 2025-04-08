@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmft7yf4qs4jq"
-path="res://.godot/imported/g1js23pw.png-a2fef0f44eabfea55acf98b32ad6ca13.ctex"
+uid="uid://bt4vsybw7rtmh"
+path="res://.godot/imported/woman1.png-924ef5d6a58980db4cd9b0a4682eaed0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://office/g1js23pw.png"
-dest_files=["res://.godot/imported/g1js23pw.png-a2fef0f44eabfea55acf98b32ad6ca13.ctex"]
+source_file="res://Characters/woman1.png"
+dest_files=["res://.godot/imported/woman1.png-924ef5d6a58980db4cd9b0a4682eaed0.ctex"]
 
 [params]
 

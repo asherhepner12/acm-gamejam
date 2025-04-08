@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce8u50sy3xwwi"
-path="res://.godot/imported/bllr2101.png-ea2c3c784b003b5b007f1d041ff060bc.ctex"
+uid="uid://ece3kp6it1u0"
+path="res://.godot/imported/clock5.png-3fa48eb6c2bc9bc53081a8878a638dfb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/bllr2101.png"
-dest_files=["res://.godot/imported/bllr2101.png-ea2c3c784b003b5b007f1d041ff060bc.ctex"]
+source_file="res://Locations/office/clock5.png"
+dest_files=["res://.godot/imported/clock5.png-3fa48eb6c2bc9bc53081a8878a638dfb.ctex"]
 
 [params]
 

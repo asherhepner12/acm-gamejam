@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyvn3f1y2giad"]
+
+[ext_resource type="Script" uid="uid://2fnyh6dkxkhk" path="res://NPC.gd" id="1_mjtpb"]
+[ext_resource type="Texture2D" uid="uid://bt4vsybw7rtmh" path="res://Characters/woman1.png" id="2_y6poa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxm6"]
+size = Vector2(275, 648)
+
+[node name="Woman1NPC" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_mjtpb")
+interact_label = "dialogue_1"
+interact_value = "I've been clicked!"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-23.4999, 3)
+shape = SubResource("RectangleShape2D_3dxm6")
+
+[node name="Woman1" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(13.4998, 1)
+scale = Vector2(0.83906, 0.83906)
+texture = ExtResource("2_y6poa")

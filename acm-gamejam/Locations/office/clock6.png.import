@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxbymy46rcm6f"
-path="res://.godot/imported/hallway2.jpg-8c56c09399a62cab1df674981b7815f3.ctex"
+uid="uid://dmkk6ugkulafb"
+path="res://.godot/imported/clock6.png-d80041216916477616f3b3201ea27d2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://office/hallway2.jpg"
-dest_files=["res://.godot/imported/hallway2.jpg-8c56c09399a62cab1df674981b7815f3.ctex"]
+source_file="res://Locations/office/clock6.png"
+dest_files=["res://.godot/imported/clock6.png-d80041216916477616f3b3201ea27d2c.ctex"]
 
 [params]
 

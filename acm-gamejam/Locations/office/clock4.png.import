@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccfi1vx3ljb6q"
-path="res://.godot/imported/clockdesk.jpg-3e804deb1e8595e7b9ba0d6b13258ae1.ctex"
+uid="uid://ua7xe35vyy35"
+path="res://.godot/imported/clock4.png-8b3269433b6215ecc556528eff9d71f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://office/clockdesk.jpg"
-dest_files=["res://.godot/imported/clockdesk.jpg-3e804deb1e8595e7b9ba0d6b13258ae1.ctex"]
+source_file="res://Locations/office/clock4.png"
+dest_files=["res://.godot/imported/clock4.png-8b3269433b6215ecc556528eff9d71f8.ctex"]
 
 [params]
 

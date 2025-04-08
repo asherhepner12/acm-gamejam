@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cslfuknmgou6i"
-path="res://.godot/imported/desk2.jpg-9a4f243fdcb7998961a55bdd5eb9cbe5.ctex"
+uid="uid://dxfivjp63cu5f"
+path="res://.godot/imported/vecteezy_realistic-magnifying-glass-clip-art_9876398.png-ff3b62baa178cb8ca700c1ade9a15ea5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://office/desk2.jpg"
-dest_files=["res://.godot/imported/desk2.jpg-9a4f243fdcb7998961a55bdd5eb9cbe5.ctex"]
+source_file="res://Assets/vecteezy_realistic-magnifying-glass-clip-art_9876398.png"
+dest_files=["res://.godot/imported/vecteezy_realistic-magnifying-glass-clip-art_9876398.png-ff3b62baa178cb8ca700c1ade9a15ea5.ctex"]
 
 [params]
 
