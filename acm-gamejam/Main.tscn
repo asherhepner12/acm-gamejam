@@ -1,15 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://drbhu34jf6a23"]
+[gd_scene load_steps=8 format=3 uid="uid://drbhu34jf6a23"]
 
 [ext_resource type="Texture2D" uid="uid://b7je8wdwjvxu6" path="res://Locations/office/clock8.png" id="1_r0du0"]
+[ext_resource type="Texture2D" uid="uid://y6pdf0ci7yeb" path="res://Locations/office/clock7.png" id="2_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://dyvn3f1y2giad" path="res://woman_1npc.tscn" id="2_r0du0"]
 [ext_resource type="PackedScene" uid="uid://b030adkqusqdt" path="res://cursor.tscn" id="3_cm0pq"]
+[ext_resource type="Texture2D" uid="uid://ua7xe35vyy35" path="res://Locations/office/clock4.png" id="3_lgr22"]
+[ext_resource type="Texture2D" uid="uid://dmkk6ugkulafb" path="res://Locations/office/clock6.png" id="4_trn2v"]
+[ext_resource type="Texture2D" uid="uid://ece3kp6it1u0" path="res://Locations/office/clock5.png" id="5_03owx"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Office" type="Node2D"]
 
-[node name="Intro Room" type="Sprite2D" parent="."]
+[node name="Backdrops" type="Node2D" parent="."]
+
+[node name="IntroRoom" type="Sprite2D" parent="Backdrops"]
+unique_name_in_owner = true
 position = Vector2(577, 322)
 scale = Vector2(0.606713, 0.606713)
 texture = ExtResource("1_r0du0")
+
+[node name="IntroRoomBack" type="Sprite2D" parent="Backdrops"]
+visible = false
+position = Vector2(576, 326)
+scale = Vector2(0.613657, 0.613657)
+texture = ExtResource("2_cm0pq")
+
+[node name="Entryway" type="Sprite2D" parent="Backdrops"]
+visible = false
+position = Vector2(577, 322)
+scale = Vector2(0.611111, 0.611111)
+texture = ExtResource("3_lgr22")
+
+[node name="Hallway" type="Sprite2D" parent="Backdrops"]
+visible = false
+position = Vector2(573.5, 319.5)
+scale = Vector2(0.610937, 0.625)
+texture = ExtResource("4_trn2v")
+
+[node name="HallwayTurned" type="Sprite2D" parent="Backdrops"]
+visible = false
+position = Vector2(575, 326)
+scale = Vector2(0.610648, 0.610648)
+texture = ExtResource("5_03owx")
 
 [node name="Woman1NPC" parent="." instance=ExtResource("2_r0du0")]
 position = Vector2(1020, 430)

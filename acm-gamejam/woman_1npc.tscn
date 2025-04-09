@@ -11,7 +11,6 @@ collision_layer = 2
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_mjtpb")
-interact_label = "dialogue_1"
 interact_value = "I've been clicked!"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -22,7 +22,7 @@ shape = SubResource("CircleShape2D_lgr22")
 scale = Vector2(0.00786277, 0.00847456)
 texture = ExtResource("2_e4vdg")
 
-[node name="Label" type="Label" parent="."]
+[node name="InteractionLabel" type="Label" parent="."]
 offset_left = -48.0
 offset_top = 10.0
 offset_right = 59.0
