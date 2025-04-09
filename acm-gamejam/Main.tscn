@@ -1,50 +1,85 @@
-[gd_scene load_steps=8 format=3 uid="uid://drbhu34jf6a23"]
+[gd_scene load_steps=12 format=3 uid="uid://drbhu34jf6a23"]
 
 [ext_resource type="Texture2D" uid="uid://b7je8wdwjvxu6" path="res://Locations/office/clock8.png" id="1_r0du0"]
+[ext_resource type="PackedScene" uid="uid://c4c48mstr5b0w" path="res://move_up_detection.tscn" id="2_20pc6"]
 [ext_resource type="Texture2D" uid="uid://y6pdf0ci7yeb" path="res://Locations/office/clock7.png" id="2_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://dyvn3f1y2giad" path="res://woman_1npc.tscn" id="2_r0du0"]
+[ext_resource type="PackedScene" uid="uid://dbgy5434d6t2h" path="res://move_down_detection.tscn" id="3_5vvyt"]
 [ext_resource type="PackedScene" uid="uid://b030adkqusqdt" path="res://cursor.tscn" id="3_cm0pq"]
 [ext_resource type="Texture2D" uid="uid://ua7xe35vyy35" path="res://Locations/office/clock4.png" id="3_lgr22"]
+[ext_resource type="PackedScene" uid="uid://b8irqvvdmgkt7" path="res://move_right_detection.tscn" id="4_c6i3y"]
 [ext_resource type="Texture2D" uid="uid://dmkk6ugkulafb" path="res://Locations/office/clock6.png" id="4_trn2v"]
 [ext_resource type="Texture2D" uid="uid://ece3kp6it1u0" path="res://Locations/office/clock5.png" id="5_03owx"]
+[ext_resource type="PackedScene" uid="uid://napgndb76r14" path="res://move_left_detection.tscn" id="5_c2ibq"]
 
-[node name="Office" type="Node2D"]
+[node name="Root" type="Node"]
 
-[node name="Backdrops" type="Node2D" parent="."]
+[node name="Cursor" parent="." instance=ExtResource("3_cm0pq")]
+z_index = 3
+position = Vector2(1017, 421)
+scale = Vector2(0.803056, 1)
 
-[node name="IntroRoom" type="Sprite2D" parent="Backdrops"]
+[node name="MovementDetection" type="Node2D" parent="."]
+top_level = true
+z_index = 1
+position = Vector2(113, 95)
+scale = Vector2(1.18142, 2.27664)
+
+[node name="MoveUpDetection" parent="MovementDetection" instance=ExtResource("2_20pc6")]
+scale = Vector2(1, 1)
+
+[node name="MoveDownDetection" parent="MovementDetection" instance=ExtResource("3_5vvyt")]
+position = Vector2(766.03, 199.856)
+rotation = -3.14159
+scale = Vector2(1, 1)
+
+[node name="MoveRightDetection" parent="MovementDetection" instance=ExtResource("4_c6i3y")]
+position = Vector2(763.491, 3.51395)
+scale = Vector2(0.252579, 1.39907)
+
+[node name="MoveLeftDetection" parent="MovementDetection" instance=ExtResource("5_c2ibq")]
+position = Vector2(-2.53934, 196.781)
+scale = Vector2(0.252579, 1.39907)
+
+[node name="Locations" type="Node2D" parent="."]
+
+[node name="Office" type="Node2D" parent="Locations"]
+
+[node name="Backdrops" type="Node2D" parent="Locations/Office"]
+
+[node name="IntroRoom" type="Sprite2D" parent="Locations/Office/Backdrops"]
 unique_name_in_owner = true
+visible = false
 position = Vector2(577, 322)
 scale = Vector2(0.606713, 0.606713)
 texture = ExtResource("1_r0du0")
 
-[node name="IntroRoomBack" type="Sprite2D" parent="Backdrops"]
+[node name="IntroRoomBack" type="Sprite2D" parent="Locations/Office/Backdrops"]
 visible = false
 position = Vector2(576, 326)
 scale = Vector2(0.613657, 0.613657)
 texture = ExtResource("2_cm0pq")
 
-[node name="Entryway" type="Sprite2D" parent="Backdrops"]
+[node name="Entryway" type="Sprite2D" parent="Locations/Office/Backdrops"]
 visible = false
 position = Vector2(577, 322)
 scale = Vector2(0.611111, 0.611111)
 texture = ExtResource("3_lgr22")
 
-[node name="Hallway" type="Sprite2D" parent="Backdrops"]
-visible = false
+[node name="Hallway" type="Sprite2D" parent="Locations/Office/Backdrops"]
 position = Vector2(573.5, 319.5)
 scale = Vector2(0.610937, 0.625)
 texture = ExtResource("4_trn2v")
 
-[node name="HallwayTurned" type="Sprite2D" parent="Backdrops"]
+[node name="HallwayTurned" type="Sprite2D" parent="Locations/Office/Backdrops"]
 visible = false
 position = Vector2(575, 326)
 scale = Vector2(0.610648, 0.610648)
 texture = ExtResource("5_03owx")
 
-[node name="Woman1NPC" parent="." instance=ExtResource("2_r0du0")]
-position = Vector2(1020, 430)
+[node name="NPCS" type="Node2D" parent="Locations/Office"]
+z_index = 2
 
-[node name="Cursor" parent="." instance=ExtResource("3_cm0pq")]
-position = Vector2(1017, 421)
-scale = Vector2(0.803056, 1)
+[node name="Woman1NPC" parent="Locations/Office/NPCS" instance=ExtResource("2_r0du0")]
+visible = false
+position = Vector2(1020, 430)

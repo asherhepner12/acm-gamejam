@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dbgy5434d6t2h"]
+
+[node name="MoveDownDetection" type="Area2D"]
+rotation = 3.14159
+scale = Vector2(1.18142, 2.27664)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(21.4145, 8.8155)
+polygon = PackedVector2Array(-10, -10, 0, 0, 36, 0, 45, -10)

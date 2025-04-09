@@ -8,9 +8,10 @@ func _process(delta: float) -> void:
 	if !visible:
 		interact_type = "none"
 		interact_value = "none"
-		interact_label = ""
+		$CollisionShape2D.disabled = true
 	else:
+		$CollisionShape2D.disabled = false
 		interact_type = "npc"
 		interact_value = "NPC: Hello!"
-		interact_label = "dialogue_1"
+		
 	return

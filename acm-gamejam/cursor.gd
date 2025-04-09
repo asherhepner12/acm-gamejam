@@ -1,43 +1,26 @@
 extends Node2D
-@onready var backdrop = $"../Backdrops/IntroRoom"
-#@onready var location_index_x
-#@onready var location_index_y 
+
 @onready var all_interactions = []
 @onready var label = $InteractionLabel
-@onready var cursor = get_node
+var location_class = load("res://Location.gd")
 var location_node_class = load("res://LocationNode.gd")
+var location = location_class.new()
 var location_node = location_node_class.new()
-var mouse_coordinates
-
+var location_list = [null,null,null,null,null,null,null,null,null,null]
+var location_list_index = 0
 func _ready():
 	update_interactions()
-	
+	location_setup()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
-	#Create map of office
-	location_node.backdrop = backdrop
-	location_node.npcs[0] = $"../Woman1NPC"
-	location_node.back = location_node_class.new()
-	location_node.back.backdrop = $"../Backdrops/IntroRoomBack"
-	location_node.back.forward = location_node
-	location_node.back.back = location_node_class.new()
-	location_node.back.back.backdrop = $"../Backdrops/Entryway"
-	location_node.back.back.left = location_node_class.new()
-	location_node.back.back.left.backdrop = $"../Backdrops/HallwayTurned"
-	location_node.back.back.left.right = location_node.back.back
-	location_node.back.back.forward = location_node.back
-	location_node.back.back.back = location_node_class.new()
-	location_node.back.back.back.backdrop = $"../Backdrops/Hallway"
-	location_node.back.back.back.forward = location_node.back.back
-
+	
 	
 func _process(delta: float) -> void:
-	mouse_coordinates = get_viewport().get_mouse_position()
-	position = mouse_coordinates
+	position = get_viewport().get_mouse_position()
 	
 	if Input.is_action_just_pressed("left_click"):
 		execute_interaction()
-		
+	#Handle movement	
 	if Input.is_action_just_pressed("right"):
 		update_location("right")
 	if Input.is_action_just_pressed("left"):
@@ -103,8 +86,30 @@ func update_location(direction):
 	for i in range (0,10):
 		if location_node.npcs[i] != null:
 			location_node.npcs[i].visible = true
+			
 func hide_values(location_node):
 	location_node.backdrop.visible = false
 	for i in range (0,10):
 		if location_node.npcs[i] != null:
 			location_node.npcs[i].visible = false
+
+func location_setup():
+	#Create map of office
+	location_node.backdrop = $"../Locations/Office/Backdrops/IntroRoom"
+	location_node.npcs[0] = $"../Locations/Office/NPCS/Woman1NPC"
+	location_node.back = location_node_class.new()
+	location_node.back.backdrop = $"../Locations/Office/Backdrops/IntroRoomBack"
+	location_node.back.forward = location_node
+	location_node.back.back = location_node_class.new()
+	location_node.back.back.backdrop = $"../Locations/Office/Backdrops/Entryway"
+	location_node.back.back.left = location_node_class.new()
+	location_node.back.back.left.backdrop = $"../Locations/Office/Backdrops/HallwayTurned"
+	location_node.back.back.left.right = location_node.back.back
+	location_node.back.back.forward = location_node.back
+	location_node.back.back.back = location_node_class.new()
+	location_node.back.back.back.backdrop = $"../Locations/Office/Backdrops/Hallway"
+	location_node.back.back.back.forward = location_node.back.back
+	location_node = location_node.back.back.back
+	location.head = location_node
+	location.title = "Office"
+	location_list[0] = location
