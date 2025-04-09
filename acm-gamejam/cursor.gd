@@ -22,13 +22,14 @@ func _ready():
 	location_node.back.forward = location_node
 	location_node.back.back = location_node_class.new()
 	location_node.back.back.backdrop = $"../Backdrops/Entryway"
+	location_node.back.back.left = location_node_class.new()
+	location_node.back.back.left.backdrop = $"../Backdrops/HallwayTurned"
+	location_node.back.back.left.right = location_node.back.back
 	location_node.back.back.forward = location_node.back
 	location_node.back.back.back = location_node_class.new()
 	location_node.back.back.back.backdrop = $"../Backdrops/Hallway"
 	location_node.back.back.back.forward = location_node.back.back
-	location_node.back.back.back.back = location_node_class.new()
-	location_node.back.back.back.back.backdrop = $"../Backdrops/HallwayTurned"
-	location_node.back.back.back.back.forward = location_node.back.back.back
+
 	
 func _process(delta: float) -> void:
 	mouse_coordinates = get_viewport().get_mouse_position()
