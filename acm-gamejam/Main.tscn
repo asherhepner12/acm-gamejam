@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://drbhu34jf6a23"]
+[gd_scene load_steps=17 format=3 uid="uid://drbhu34jf6a23"]
 
 [ext_resource type="Texture2D" uid="uid://b7je8wdwjvxu6" path="res://Locations/office/clock8.png" id="1_r0du0"]
 [ext_resource type="PackedScene" uid="uid://c4c48mstr5b0w" path="res://move_up_detection.tscn" id="2_20pc6"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://6o6l7pumnlhq" path="res://Locations/street/Cityhall.png" id="13_c6i3y"]
 [ext_resource type="Texture2D" uid="uid://cs87fmta2xn35" path="res://Locations/Transition.png" id="13_j4qnp"]
 [ext_resource type="Texture2D" uid="uid://h7n1vo7mlokm" path="res://Locations/street/Wilshire.png" id="14_c2ibq"]
+[ext_resource type="Resource" uid="uid://dt4jyqaxe2xcp" path="res://Dialogue/dialogue.dialogue" id="14_fpfj3"]
 
 [node name="Root" type="Node"]
 
@@ -100,6 +101,7 @@ z_index = 5
 [node name="Woman1NPC" parent="Locations/Office/NPCS" instance=ExtResource("2_r0du0")]
 visible = false
 position = Vector2(1020, 430)
+dialogue_resource = ExtResource("14_fpfj3")
 
 [node name="Outside" type="Node2D" parent="Locations"]
 

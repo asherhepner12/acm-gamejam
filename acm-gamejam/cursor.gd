@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var all_interactions = []
+
 var location_class = load("res://Location.gd")
 var location_node_class = load("res://LocationNode.gd")
 var location = location_class.new()
@@ -66,7 +67,9 @@ func execute_interaction():
 		var current_interaction = all_interactions[0]
 		match current_interaction.interact_type:
 			"none": return
-			"npc": print(current_interaction.interact_value)
+			"npc": 
+				current_interaction.action()
+				print(current_interaction.interact_value)
 			"movement": match current_interaction.interact_value:
 				"forward": update_location("forward")
 				"back": update_location("back")
