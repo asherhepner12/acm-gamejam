@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://drbhu34jf6a23"]
+[gd_scene load_steps=16 format=3 uid="uid://drbhu34jf6a23"]
 
 [ext_resource type="Texture2D" uid="uid://b7je8wdwjvxu6" path="res://Locations/office/clock8.png" id="1_r0du0"]
 [ext_resource type="PackedScene" uid="uid://c4c48mstr5b0w" path="res://move_up_detection.tscn" id="2_20pc6"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://dmkk6ugkulafb" path="res://Locations/office/clock6.png" id="4_trn2v"]
 [ext_resource type="Texture2D" uid="uid://ece3kp6it1u0" path="res://Locations/office/clock5.png" id="5_03owx"]
 [ext_resource type="PackedScene" uid="uid://napgndb76r14" path="res://move_left_detection.tscn" id="5_c2ibq"]
+[ext_resource type="Texture2D" uid="uid://6o6l7pumnlhq" path="res://Locations/street/Cityhall.png" id="13_c6i3y"]
+[ext_resource type="Texture2D" uid="uid://cs87fmta2xn35" path="res://Locations/Transition.png" id="13_j4qnp"]
+[ext_resource type="Texture2D" uid="uid://h7n1vo7mlokm" path="res://Locations/street/Wilshire.png" id="14_c2ibq"]
 
 [node name="Root" type="Node"]
 
@@ -85,9 +88,31 @@ position = Vector2(575, 326)
 scale = Vector2(0.610648, 0.610648)
 texture = ExtResource("5_03owx")
 
+[node name="Transition" type="Sprite2D" parent="Locations/Office/Backdrops"]
+visible = false
+position = Vector2(585, 321)
+scale = Vector2(1.03857, 1.07102)
+texture = ExtResource("13_j4qnp")
+
 [node name="NPCS" type="Node2D" parent="Locations/Office"]
 z_index = 5
 
 [node name="Woman1NPC" parent="Locations/Office/NPCS" instance=ExtResource("2_r0du0")]
 visible = false
 position = Vector2(1020, 430)
+
+[node name="Outside" type="Node2D" parent="Locations"]
+
+[node name="Backdrops" type="Node2D" parent="Locations/Outside"]
+
+[node name="CityHall" type="Sprite2D" parent="Locations/Outside/Backdrops"]
+visible = false
+position = Vector2(568, 343)
+scale = Vector2(1.05516, 1.05516)
+texture = ExtResource("13_c6i3y")
+
+[node name="Wilshire" type="Sprite2D" parent="Locations/Outside/Backdrops"]
+visible = false
+position = Vector2(579, 280)
+scale = Vector2(1.47158, 1.47158)
+texture = ExtResource("14_c2ibq")

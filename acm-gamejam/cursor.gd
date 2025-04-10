@@ -108,14 +108,18 @@ func update_location(direction):
 	for i in range (0,10):
 		if location_node.npcs[i] != null:
 			location_node.npcs[i].visible = true
-	if location_node.forward != null:
+	if location_node.forward != null and location_node.forward.accessible == true:
 		$"../MovementDetection/ForwardDetection".visible = true
-	if location_node.back != null:
+	if location_node.back != null and location_node.back.accessible == true:
 		$"../MovementDetection/BackDetection".visible = true
-	if location_node.left != null:
+	if location_node.left != null and location_node.left.accessible == true:
 		$"../MovementDetection/LeftDetection".visible = true
-	if location_node.right != null:
+	if location_node.right != null and location_node.right.accessible == true:
 		$"../MovementDetection/RightDetection".visible = true
+	if location_node.transition != -1:
+		hide_values(location_node)
+		location_node = location_list[location_node.transition].head
+		update_location(location_node)
 			
 func hide_values(location_node):
 	location_node.backdrop.visible = false
@@ -128,7 +132,16 @@ func hide_values(location_node):
 	$"../MovementDetection/RightDetection".visible = false
 
 func location_setup():
+	#Create map of Outside
+	location_node.backdrop = $"../Locations/Outside/Backdrops/CityHall"
+	location_node.right = location_node_class.new()
+	location_node.right.backdrop = $"../Locations/Outside/Backdrops/Wilshire"
+	location_node.right.left = location_node
+	location.head = location_node
+	location.title = "Outside"
+	location_list[1] = location
 	#Create map of office
+	location_node = location_node_class.new()
 	location_node.backdrop = $"../Locations/Office/Backdrops/IntroRoom"
 	location_node.npcs[0] = $"../Locations/Office/NPCS/Woman1NPC"
 	location_node.back = location_node_class.new()
@@ -138,12 +151,18 @@ func location_setup():
 	location_node.back.back.backdrop = $"../Locations/Office/Backdrops/Entryway"
 	location_node.back.back.left = location_node_class.new()
 	location_node.back.back.left.backdrop = $"../Locations/Office/Backdrops/HallwayTurned"
+	location_node.back.back.left.accessible = true
+	location_node.back.back.left.forward = location_node_class.new()
+	location_node.back.back.left.forward.backdrop = $"../Locations/Office/Backdrops/Transition"
+	print(location_node.back.back.left.forward.backdrop)
+	location_node.back.back.left.forward.transition = 1
 	location_node.back.back.left.right = location_node.back.back
 	location_node.back.back.forward = location_node.back
 	location_node.back.back.back = location_node_class.new()
 	location_node.back.back.back.backdrop = $"../Locations/Office/Backdrops/Hallway"
 	location_node.back.back.back.forward = location_node.back.back
 	location_node = location_node.back.back.back
+	location = location_class.new()
 	location.head = location_node
 	location.title = "Office"
 	location_list[0] = location
