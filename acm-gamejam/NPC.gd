@@ -1,17 +1,6 @@
-class_name Interactable extends Area2D
+extends Interactable
 
-@export var interact_label = "dialogue_1"
-@export var interact_type = "npc"
-@export var interact_value = "default"
-
-func _process(delta: float) -> void:
-	if !visible:
-		interact_type = "none"
-		interact_value = "none"
-		$CollisionShape2D.disabled = true
-	else:
-		$CollisionShape2D.disabled = false
-		interact_type = "npc"
-		interact_value = "NPC: Hello!"
-		
-	return
+func _init():
+	interact_type = "npc"
+	interact_value = "NPC: Hello!"
+	interact_label = "npc"

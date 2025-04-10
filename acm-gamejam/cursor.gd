@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var all_interactions = []
-@onready var label = $InteractionLabel
 var location_class = load("res://Location.gd")
 var location_node_class = load("res://LocationNode.gd")
 var location = location_class.new()
@@ -12,8 +11,10 @@ func _ready():
 	update_interactions()
 	location_setup()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	
-	
+	$"../MovementDetection/BackDetection".visible = false
+	$"../MovementDetection/LeftDetection".visible = false
+	$"../MovementDetection/RightDetection".visible = false
+	$"InteractionArea/CollisionShape2D/Inspect".visible = false
 	
 func _process(delta: float) -> void:
 	position = get_viewport().get_mouse_position()
@@ -39,10 +40,26 @@ func _on_interaction_area_area_exited(area: Area2D) -> void:
 	update_interactions()
 
 func update_interactions():
-	if all_interactions and all_interactions[0].interact_label != "none":
-		label.text = all_interactions[0].interact_label
+	if all_interactions:
+		$"InteractionArea/CollisionShape2D/Idle".visible = false
+		match all_interactions[0].interact_label:
+			"forward":
+				$"InteractionArea/CollisionShape2D/Up".visible = true
+			"back":
+				$"InteractionArea/CollisionShape2D/Down".visible = true
+			"left":
+				$"InteractionArea/CollisionShape2D/Left".visible = true
+			"right":
+				$"InteractionArea/CollisionShape2D/Right".visible = true
+			"npc":
+				$"InteractionArea/CollisionShape2D/Inspect".visible = true
 	else:
-		label.text = " "
+		$"InteractionArea/CollisionShape2D/Idle".visible = true
+		$"InteractionArea/CollisionShape2D/Up".visible = false
+		$"InteractionArea/CollisionShape2D/Down".visible = false
+		$"InteractionArea/CollisionShape2D/Left".visible = false
+		$"InteractionArea/CollisionShape2D/Right".visible = false
+		$"InteractionArea/CollisionShape2D/Inspect".visible = false
 		
 func execute_interaction():
 	if all_interactions:
@@ -50,6 +67,11 @@ func execute_interaction():
 		match current_interaction.interact_type:
 			"none": return
 			"npc": print(current_interaction.interact_value)
+			"movement": match current_interaction.interact_value:
+				"forward": update_location("forward")
+				"back": update_location("back")
+				"left": update_location("left")
+				"right": update_location("right")
 
 			
 func update_location(direction):
@@ -86,12 +108,24 @@ func update_location(direction):
 	for i in range (0,10):
 		if location_node.npcs[i] != null:
 			location_node.npcs[i].visible = true
+	if location_node.forward != null:
+		$"../MovementDetection/ForwardDetection".visible = true
+	if location_node.back != null:
+		$"../MovementDetection/BackDetection".visible = true
+	if location_node.left != null:
+		$"../MovementDetection/LeftDetection".visible = true
+	if location_node.right != null:
+		$"../MovementDetection/RightDetection".visible = true
 			
 func hide_values(location_node):
 	location_node.backdrop.visible = false
 	for i in range (0,10):
 		if location_node.npcs[i] != null:
 			location_node.npcs[i].visible = false
+	$"../MovementDetection/ForwardDetection".visible = false
+	$"../MovementDetection/BackDetection".visible = false
+	$"../MovementDetection/LeftDetection".visible = false
+	$"../MovementDetection/RightDetection".visible = false
 
 func location_setup():
 	#Create map of office

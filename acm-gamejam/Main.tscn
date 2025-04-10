@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://drbhu34jf6a23"]
+[gd_scene load_steps=13 format=3 uid="uid://drbhu34jf6a23"]
 
 [ext_resource type="Texture2D" uid="uid://b7je8wdwjvxu6" path="res://Locations/office/clock8.png" id="1_r0du0"]
 [ext_resource type="PackedScene" uid="uid://c4c48mstr5b0w" path="res://move_up_detection.tscn" id="2_20pc6"]
 [ext_resource type="Texture2D" uid="uid://y6pdf0ci7yeb" path="res://Locations/office/clock7.png" id="2_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://dyvn3f1y2giad" path="res://woman_1npc.tscn" id="2_r0du0"]
 [ext_resource type="PackedScene" uid="uid://dbgy5434d6t2h" path="res://move_down_detection.tscn" id="3_5vvyt"]
+[ext_resource type="Script" uid="uid://taf0uvur2i37" path="res://MovementArea.gd" id="3_c6i3y"]
 [ext_resource type="PackedScene" uid="uid://b030adkqusqdt" path="res://cursor.tscn" id="3_cm0pq"]
 [ext_resource type="Texture2D" uid="uid://ua7xe35vyy35" path="res://Locations/office/clock4.png" id="3_lgr22"]
 [ext_resource type="PackedScene" uid="uid://b8irqvvdmgkt7" path="res://move_right_detection.tscn" id="4_c6i3y"]
@@ -15,7 +16,7 @@
 [node name="Root" type="Node"]
 
 [node name="Cursor" parent="." instance=ExtResource("3_cm0pq")]
-z_index = 3
+z_index = 6
 position = Vector2(1017, 421)
 scale = Vector2(0.803056, 1)
 
@@ -25,21 +26,28 @@ z_index = 1
 position = Vector2(113, 95)
 scale = Vector2(1.18142, 2.27664)
 
-[node name="MoveUpDetection" parent="MovementDetection" instance=ExtResource("2_20pc6")]
+[node name="ForwardDetection" parent="MovementDetection" instance=ExtResource("2_20pc6")]
+z_index = 1
 scale = Vector2(1, 1)
+script = ExtResource("3_c6i3y")
 
-[node name="MoveDownDetection" parent="MovementDetection" instance=ExtResource("3_5vvyt")]
+[node name="BackDetection" parent="MovementDetection" instance=ExtResource("3_5vvyt")]
+z_index = 1
 position = Vector2(766.03, 199.856)
 rotation = -3.14159
 scale = Vector2(1, 1)
+script = ExtResource("3_c6i3y")
 
-[node name="MoveRightDetection" parent="MovementDetection" instance=ExtResource("4_c6i3y")]
+[node name="RightDetection" parent="MovementDetection" instance=ExtResource("4_c6i3y")]
+z_index = 1
 position = Vector2(763.491, 3.51395)
 scale = Vector2(0.252579, 1.39907)
+script = ExtResource("3_c6i3y")
 
-[node name="MoveLeftDetection" parent="MovementDetection" instance=ExtResource("5_c2ibq")]
-position = Vector2(-2.53934, 196.781)
-scale = Vector2(0.252579, 1.39907)
+[node name="LeftDetection" parent="MovementDetection" instance=ExtResource("5_c2ibq")]
+position = Vector2(-1.69288, 191.51)
+scale = Vector2(0.24571, 1.21086)
+script = ExtResource("3_c6i3y")
 
 [node name="Locations" type="Node2D" parent="."]
 
@@ -78,7 +86,7 @@ scale = Vector2(0.610648, 0.610648)
 texture = ExtResource("5_03owx")
 
 [node name="NPCS" type="Node2D" parent="Locations/Office"]
-z_index = 2
+z_index = 5
 
 [node name="Woman1NPC" parent="Locations/Office/NPCS" instance=ExtResource("2_r0du0")]
 visible = false

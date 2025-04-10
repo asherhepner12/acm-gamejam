@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://c4c48mstr5b0w"]
 
-[node name="MoveUpDetection" type="Area2D"]
+[node name="ForwardDetection" type="Area2D"]
 scale = Vector2(1.18142, 2.27664)
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(21.4145, 8.8155)

@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://napgndb76r14"]
 
-[node name="MoveLeftDetection" type="Area2D"]
+[node name="LeftDetection" type="Area2D"]
 rotation = -1.5708
 scale = Vector2(0.575031, 1.65288)
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(21.4145, 8.8155)
