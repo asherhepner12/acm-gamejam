@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://drbhu34jf6a23"]
+[gd_scene load_steps=19 format=3 uid="uid://drbhu34jf6a23"]
 
 [ext_resource type="Texture2D" uid="uid://b7je8wdwjvxu6" path="res://Locations/office/clock8.png" id="1_r0du0"]
 [ext_resource type="PackedScene" uid="uid://c4c48mstr5b0w" path="res://move_up_detection.tscn" id="2_20pc6"]
@@ -16,11 +16,13 @@
 [ext_resource type="Texture2D" uid="uid://cs87fmta2xn35" path="res://Locations/Transition.png" id="13_j4qnp"]
 [ext_resource type="Texture2D" uid="uid://h7n1vo7mlokm" path="res://Locations/street/Wilshire.png" id="14_c2ibq"]
 [ext_resource type="Resource" uid="uid://dt4jyqaxe2xcp" path="res://Dialogue/dialogue.dialogue" id="14_fpfj3"]
+[ext_resource type="Script" uid="uid://cclqlyhdelgj6" path="res://Object.gd" id="15_sc1dx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjvhd"]
 
 [node name="Root" type="Node"]
 
 [node name="Cursor" parent="." instance=ExtResource("3_cm0pq")]
-z_index = 6
 position = Vector2(1017, 421)
 scale = Vector2(0.803056, 1)
 
@@ -102,6 +104,20 @@ z_index = 5
 visible = false
 position = Vector2(1020, 430)
 dialogue_resource = ExtResource("14_fpfj3")
+
+[node name="Objects" type="Node2D" parent="Locations/Office"]
+
+[node name="Telephone" type="Area2D" parent="Locations/Office/Objects"]
+visible = false
+position = Vector2(1029, 301)
+scale = Vector2(4.40724, 6.24783)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("15_sc1dx")
+interact_value = "Telephone"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Office/Objects/Telephone"]
+shape = SubResource("CapsuleShape2D_kjvhd")
 
 [node name="Outside" type="Node2D" parent="Locations"]
 

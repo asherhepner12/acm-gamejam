@@ -23,14 +23,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("left_click"):
 		execute_interaction()
 	#Handle movement	
-	if Input.is_action_just_pressed("right"):
-		update_location("right")
-	if Input.is_action_just_pressed("left"):
-		update_location("left")
-	if Input.is_action_just_pressed("forward"):
-		update_location("forward")
-	if Input.is_action_just_pressed("back"):
-		update_location("back")
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	all_interactions.insert(0, area)
@@ -54,6 +46,8 @@ func update_interactions():
 				$"InteractionArea/CollisionShape2D/Right".visible = true
 			"npc":
 				$"InteractionArea/CollisionShape2D/Inspect".visible = true
+			"object":
+				$"InteractionArea/CollisionShape2D/Inspect".visible = true
 	else:
 		$"InteractionArea/CollisionShape2D/Idle".visible = true
 		$"InteractionArea/CollisionShape2D/Up".visible = false
@@ -75,9 +69,12 @@ func execute_interaction():
 				"back": update_location("back")
 				"left": update_location("left")
 				"right": update_location("right")
+			"object":
+				print(current_interaction.interact_value)
 
 			
 func update_location(direction):
+	#Process depending on direction chosen
 	match direction:
 		"forward":
 			if (location_node.forward != null):
@@ -108,9 +105,13 @@ func update_location(direction):
 			else:
 				print("Cannot go right!")
 	location_node.backdrop.visible = true
+	#Enable NPCs/Objects in the location
 	for i in range (0,10):
 		if location_node.npcs[i] != null:
 			location_node.npcs[i].visible = true
+		if location_node.objects[i] != null:
+			location_node.objects[i].visible = true
+	#Enable movement detection in the location
 	if location_node.forward != null and location_node.forward.accessible == true:
 		$"../MovementDetection/ForwardDetection".visible = true
 	if location_node.back != null and location_node.back.accessible == true:
@@ -119,16 +120,20 @@ func update_location(direction):
 		$"../MovementDetection/LeftDetection".visible = true
 	if location_node.right != null and location_node.right.accessible == true:
 		$"../MovementDetection/RightDetection".visible = true
-	if location_node.transition != -1:
+	#If the location you are moving to is a transition point
+	if location_node.transition != -1: 
+		print("Went to " + location_list[location_node.transition].title+"!")
 		hide_values(location_node)
 		location_node = location_list[location_node.transition].head
 		update_location(location_node)
-			
+		
 func hide_values(location_node):
 	location_node.backdrop.visible = false
 	for i in range (0,10):
 		if location_node.npcs[i] != null:
 			location_node.npcs[i].visible = false
+		if location_node.objects[i] != null:
+			location_node.objects[i].visible = false
 	$"../MovementDetection/ForwardDetection".visible = false
 	$"../MovementDetection/BackDetection".visible = false
 	$"../MovementDetection/LeftDetection".visible = false
@@ -147,6 +152,7 @@ func location_setup():
 	location_node = location_node_class.new()
 	location_node.backdrop = $"../Locations/Office/Backdrops/IntroRoom"
 	location_node.npcs[0] = $"../Locations/Office/NPCS/Woman1NPC"
+	#location_node.objects[0] = $"../Locations/Office/Objects/Telephone"
 	location_node.back = location_node_class.new()
 	location_node.back.backdrop = $"../Locations/Office/Backdrops/IntroRoomBack"
 	location_node.back.forward = location_node
@@ -154,10 +160,9 @@ func location_setup():
 	location_node.back.back.backdrop = $"../Locations/Office/Backdrops/Entryway"
 	location_node.back.back.left = location_node_class.new()
 	location_node.back.back.left.backdrop = $"../Locations/Office/Backdrops/HallwayTurned"
-	location_node.back.back.left.accessible = true
+	location_node.back.back.left.accessible = true #Use as flag, set true after interactions are done
 	location_node.back.back.left.forward = location_node_class.new()
 	location_node.back.back.left.forward.backdrop = $"../Locations/Office/Backdrops/Transition"
-	print(location_node.back.back.left.forward.backdrop)
 	location_node.back.back.left.forward.transition = 1
 	location_node.back.back.left.right = location_node.back.back
 	location_node.back.back.forward = location_node.back
