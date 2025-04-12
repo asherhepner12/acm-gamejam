@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://boyvfpl61ehjr"]
+[gd_scene load_steps=11 format=3 uid="uid://x8yhc7nflqw4"]
 
 [ext_resource type="Script" uid="uid://b3fpbijtlr2q8" path="res://Dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="FontFile" uid="uid://b2pndmdk74ne0" path="res://Dialogue/typewriter_________royal200bold.ttf" id="2_ie3k4"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="FontFile" uid="uid://boa53dh8mgnei" path="res://Dialogue/typewriter_________royal200normal.ttf" id="4_tfsfl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -64,13 +66,11 @@ MarginContainer/constants/margin_top = 15
 Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
 [node name="ExampleBalloon" type="CanvasLayer"]
-layer = 0
+layer = 100
 script = ExtResource("1_36de5")
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
-light_mask = 0
-z_index = -1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,8 +81,6 @@ theme = SubResource("Theme_qq3yp")
 
 [node name="Panel" type="Panel" parent="Balloon"]
 clip_children = 2
-visibility_layer = 2
-z_index = -1
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -112,6 +110,8 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("2_ie3k4")
+theme_override_fonts/bold_font = ExtResource("2_ie3k4")
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -121,20 +121,21 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("4_tfsfl")
+theme_override_fonts/bold_font = ExtResource("2_ie3k4")
 text = "Dialogue..."
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
-z_index = -1
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -147.0
-offset_top = -574.0
-offset_right = 494.0
-offset_bottom = -170.0
+offset_left = 35.0
+offset_top = -168.0
+offset_right = 574.0
+offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -148,6 +149,7 @@ response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_tfsfl")
 text = "Response example"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]

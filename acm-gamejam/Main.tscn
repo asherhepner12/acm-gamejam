@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://6o6l7pumnlhq" path="res://Locations/street/Cityhall.png" id="13_c6i3y"]
 [ext_resource type="Texture2D" uid="uid://cs87fmta2xn35" path="res://Locations/Transition.png" id="13_j4qnp"]
 [ext_resource type="Texture2D" uid="uid://h7n1vo7mlokm" path="res://Locations/street/Wilshire.png" id="14_c2ibq"]
-[ext_resource type="Resource" uid="uid://dt4jyqaxe2xcp" path="res://Dialogue/dialogue.dialogue" id="14_fpfj3"]
+[ext_resource type="Resource" uid="uid://cp1ito683bqn3" path="res://Dialogue/lady.dialogue" id="14_sc1dx"]
 [ext_resource type="Script" uid="uid://cclqlyhdelgj6" path="res://Object.gd" id="15_sc1dx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjvhd"]
@@ -103,7 +103,7 @@ z_index = 5
 [node name="Woman1NPC" parent="Locations/Office/NPCS" instance=ExtResource("2_r0du0")]
 visible = false
 position = Vector2(1020, 430)
-dialogue_resource = ExtResource("14_fpfj3")
+dialogue_resource = ExtResource("14_sc1dx")
 
 [node name="Objects" type="Node2D" parent="Locations/Office"]
 
