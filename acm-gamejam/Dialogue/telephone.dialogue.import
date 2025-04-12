@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://bjr6wms6eap88"
+path="res://.godot/imported/telephone.dialogue-31cac72c70bedb0dfeb8a84f89a9637f.tres"
+
+[deps]
+
+source_file="res://Dialogue/telephone.dialogue"
+dest_files=["res://.godot/imported/telephone.dialogue-31cac72c70bedb0dfeb8a84f89a9637f.tres"]
+
+[params]
+
+defaults=true

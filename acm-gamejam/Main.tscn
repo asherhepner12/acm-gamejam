@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://drbhu34jf6a23"]
+[gd_scene load_steps=20 format=3 uid="uid://drbhu34jf6a23"]
 
 [ext_resource type="Texture2D" uid="uid://b7je8wdwjvxu6" path="res://Locations/office/clock8.png" id="1_r0du0"]
 [ext_resource type="PackedScene" uid="uid://c4c48mstr5b0w" path="res://move_up_detection.tscn" id="2_20pc6"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://h7n1vo7mlokm" path="res://Locations/street/Wilshire.png" id="14_c2ibq"]
 [ext_resource type="Resource" uid="uid://cp1ito683bqn3" path="res://Dialogue/lady.dialogue" id="14_sc1dx"]
 [ext_resource type="Script" uid="uid://cclqlyhdelgj6" path="res://Object.gd" id="15_sc1dx"]
+[ext_resource type="Resource" uid="uid://bjr6wms6eap88" path="res://Dialogue/telephone.dialogue" id="16_kjvhd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjvhd"]
 
@@ -114,6 +115,7 @@ scale = Vector2(4.40724, 6.24783)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("15_sc1dx")
+dialogue_resource = ExtResource("16_kjvhd")
 interact_value = "Telephone"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Office/Objects/Telephone"]

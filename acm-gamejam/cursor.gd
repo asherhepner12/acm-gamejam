@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var all_interactions = []
-
+var inventory = []
 var location_class = load("res://Location.gd")
 var location_node_class = load("res://LocationNode.gd")
 var location = location_class.new()
@@ -70,7 +70,9 @@ func execute_interaction():
 				"left": update_location("left")
 				"right": update_location("right")
 			"object":
-				print(current_interaction.interact_value)
+				current_interaction.action()
+				if current_interaction.is_equippable == true:
+					inventory.add(current_interaction)
 
 			
 func update_location(direction):
@@ -107,9 +109,9 @@ func update_location(direction):
 	location_node.backdrop.visible = true
 	#Enable NPCs/Objects in the location
 	for i in range (0,10):
-		if location_node.npcs[i] != null:
+		if location_node.npcs[i] != null and location_node.npcs[i].available == true:
 			location_node.npcs[i].visible = true
-		if location_node.objects[i] != null:
+		if location_node.objects[i] != null and location_node.objects[i].available == true:
 			location_node.objects[i].visible = true
 	#Enable movement detection in the location
 	if location_node.forward != null and location_node.forward.accessible == true:
@@ -152,7 +154,8 @@ func location_setup():
 	location_node = location_node_class.new()
 	location_node.backdrop = $"../Locations/Office/Backdrops/IntroRoom"
 	location_node.npcs[0] = $"../Locations/Office/NPCS/Woman1NPC"
-	#location_node.objects[0] = $"../Locations/Office/Objects/Telephone"
+	location_node.npcs[0].available = false
+	location_node.objects[0] = $"../Locations/Office/Objects/Telephone"
 	location_node.back = location_node_class.new()
 	location_node.back.backdrop = $"../Locations/Office/Backdrops/IntroRoomBack"
 	location_node.back.forward = location_node
@@ -160,7 +163,7 @@ func location_setup():
 	location_node.back.back.backdrop = $"../Locations/Office/Backdrops/Entryway"
 	location_node.back.back.left = location_node_class.new()
 	location_node.back.back.left.backdrop = $"../Locations/Office/Backdrops/HallwayTurned"
-	location_node.back.back.left.accessible = true #Use as flag, set true after interactions are done
+	location_node.back.back.left.accessible = false #Use as flag, set true after interactions are done
 	location_node.back.back.left.forward = location_node_class.new()
 	location_node.back.back.left.forward.backdrop = $"../Locations/Office/Backdrops/Transition"
 	location_node.back.back.left.forward.transition = 1
