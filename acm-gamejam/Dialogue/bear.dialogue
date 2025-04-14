@@ -1,0 +1,53 @@
+~ start
+if SignalBus.bear_state == "start"
+	match SignalBus.lady_state
+		when "help"
+			Gentleman: Can I help you sir?
+			I eye him up and down. There is a suspicious air about him.
+			Suddenly, I hear a muffled cry from what seems to be his stomach.
+			???: MMMPH!
+			You: You, uh. I think you've eaten someone.
+			Gentleman: Preposterous!
+			He attempts to cover his stomach with his hat.
+			Gentleman: How rude of you to stare at someone like that!
+			He quickly turns and tries to walk away, averting his eyes.
+			I know better.
+			I grab him by the arm and whip him around, catching him by suprise.
+			*Whack!*
+			A crack to the jaw with my right hook.
+			*Bash!*
+			Right on his humongously large nose.
+			He drops like a rock, and his fedora falls to the wayside.
+			Something starts crawling out of his mouth.
+			It's a boy!
+			You: Georgie? Is that you?
+			Georgie: It sure is mister! Boy, that guy was smelly!
+			do SignalBus.emit_signal("dialogue_disabled")
+			do SignalBus.bear_state = "game_won"
+			do SignalBus.emit_signal("game_won",true)
+			=> END
+		else
+			Gentleman: Can I help you sir?
+			I eye him up and down. There is a suspicious air about him.
+			Suddenly, I hear a muffled cry from what seems to be his stomach.
+			???: MMMPH!
+			You: You, uh. I think you've eaten someone.
+			Gentleman: Preposterous!
+			I take another look. Everything seems to be normal.
+			You: Apologies, sir.
+			do SignalBus.bear_state = "game_over"
+			do SignalBus.emit_signal("dialogue_disabled")
+			do SignalBus.emit_signal("game_over",true)
+			=> END
+elif SignalBus.bear_state == "game_over"
+	And so another case went unsolved that day. 
+	I never figured out what happened to that kid. Of course James kept his word and I would be evicted from my office and blacklisted from renting.
+	On my last night before I had to skip town I went out drinking, my life in ruin.
+	Stranger: Aren’t you that detective who solves cases that the police never seem to figure out?
+	You: Yes, at least, that’s what they used to say.
+else
+	After the Police showed up to the scene they arrested the rather strange gentleman who ended up in State prison. 
+	And you, well… 
+	After paying your rent you decided to go drinking where you spent the remainder of the special effects budget for this game getting sauced at the bar. 
+	That’s unfortunate I suppose.
+=> END

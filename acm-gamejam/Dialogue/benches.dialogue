@@ -1,0 +1,6 @@
+~ start
+These used to be for my clients.
+People of all ages would line the hallway, eagerly awaiting the chance for me to solve their problems.
+These days, they seem to just collect dust.
+do SignalBus.emit_signal("dialogue_disabled")
+=> END

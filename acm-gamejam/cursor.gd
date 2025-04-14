@@ -3,6 +3,7 @@ const Balloon = preload("res://Dialogue/balloon.tscn")
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
 @onready var all_interactions = []
+var line
 var inventory = []
 var location_class = load("res://Location.gd")
 var location_node_class = load("res://LocationNode.gd")
@@ -19,9 +20,17 @@ func _ready():
 	SignalBus.connect("show_npc", _on_show_npc)
 	SignalBus.connect("hide_npc", _on_hide_npc)
 	SignalBus.connect("enable_outside", _on_enable_outside)
+	SignalBus.connect("game_won", _on_game_won)
+	SignalBus.connect("game_over", _on_game_over)
+	if FileAccess.file_exists("user://my_data.txt"):
+		var file = FileAccess.open("user://my_data.txt", FileAccess.READ)
+		line = file.get_line()
+		print("Read line:", line)
+		file.close()
+
 	
 	#Intro monologue
-	DialogueManager.show_dialogue_balloon(dialogue_resource,dialogue_start)
+	
 	_on_dialogue_enabled("none")
 	update_interactions()
 	location_setup()
@@ -30,6 +39,13 @@ func _ready():
 	$"../MovementDetection/LeftDetection".visible = false
 	$"../MovementDetection/RightDetection".visible = false
 	$"InteractionArea/CollisionShape2D/Inspect".visible = false
+	
+	if line == "game_over":
+		_on_game_over(false)
+	elif line == "game_won":
+		_on_game_won(false)
+	else:
+		DialogueManager.show_dialogue_balloon(dialogue_resource,dialogue_start)
 	
 func _process(delta: float) -> void:
 	position = get_viewport().get_mouse_position()
@@ -199,12 +215,39 @@ func hide_values(location_node, hide_bg, exception):
 	$"../MovementDetection/RightDetection".visible = false
 func _on_enable_outside():
 	location_node.back.back.left.accessible = true
+	
+
+func _on_game_won(ingame):
+	if ingame == true:
+		
+		$"../Locations/Outside/NPCS/Bear".action()
+		var file = FileAccess.open("user://my_data.txt", FileAccess.WRITE)
+		file.store_line("game_won")
+		file.close()
+	hide_values(location_node, true, "none")
+	$"../Locations/Outside/Backdrops/Broadway".visible = true
+	$"../Locations/Outside/Backdrops/GameOver".visible = true
+	
+
+func _on_game_over(ingame):
+	if ingame == true:
+		var file = FileAccess.open("user://my_data.txt", FileAccess.WRITE)
+		file.store_line("game_over")
+		file.close()
+		$"../Locations/Outside/NPCS/Bear".action()
+	hide_values(location_node, true, "none")
+	$"../Locations/Outside/Backdrops/Broadway".visible = true
+	$"../Locations/Outside/Backdrops/GameOverBad".visible = true
+	
+	
 
 func location_setup():
 	#Create map of Outside
 	location_node.backdrop = $"../Locations/Outside/Backdrops/CityHall"
+	location_node.npcs[0] = $"../Locations/Outside/NPCS/Churchhill"
 	location_node.right = location_node_class.new()
 	location_node.right.backdrop = $"../Locations/Outside/Backdrops/Wilshire"
+	location_node.right.npcs[0] = $"../Locations/Outside/NPCS/Bear"
 	location_node.right.left = location_node
 	location.head = location_node
 	location.title = "Outside"
@@ -222,6 +265,7 @@ func location_setup():
 	location_node.back.objects[0] = $"../Locations/Office/Objects/Fan"
 	location_node.back.objects[1] = $"../Locations/Office/Objects/PartnerDesk"
 	location_node.back.objects[2] = $"../Locations/Office/Objects/SpareTypewriter"
+	location_node.back.objects[3] = $"../Locations/Office/Objects/Window"
 	location_node.back.forward = location_node
 	location_node.back.back = location_node_class.new()
 	location_node.back.back.backdrop = $"../Locations/Office/Backdrops/Entryway"
@@ -235,6 +279,7 @@ func location_setup():
 	location_node.back.back.forward = location_node.back
 	location_node.back.back.back = location_node_class.new()
 	location_node.back.back.back.backdrop = $"../Locations/Office/Backdrops/Hallway"
+	location_node.back.back.back.objects[0] = $"../Locations/Office/Objects/Benches"
 	location_node.back.back.back.forward = location_node.back.back
 	location_node = location_node.back.back.back
 	location = location_class.new()

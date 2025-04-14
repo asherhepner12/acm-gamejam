@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://de348se8xj8qv"
+path="res://.godot/imported/churchhill.dialogue-2023e002cd279b9a85029f5ed85d313b.tres"
+
+[deps]
+
+source_file="res://Dialogue/churchhill.dialogue"
+dest_files=["res://.godot/imported/churchhill.dialogue-2023e002cd279b9a85029f5ed85d313b.tres"]
+
+[params]
+
+defaults=true

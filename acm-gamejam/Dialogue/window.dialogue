@@ -1,0 +1,4 @@
+~ start
+It's a nice day outside.
+do SignalBus.emit_signal("dialogue_disabled")
+=> END

@@ -1,17 +1,46 @@
 ~ start
-Lady: Hello, sir. Are you the detective for hire? I saw your ad in the journal this week.
-You: Why of course. What can I do for you today Ma’am?
-I sit down, gesturing to the chair opposite me.
-She takes it gingerly, as if she was afraid she would break if she moved too quickly.
-Already by the look on her face I could tell she was quite hysterical.
-Lady: Well, my name is Rose Evelyn Williams. I am 37 years old.
-Rose: And, well… You’re my last resort!
-I spin around in my chair appearing to look out the window. 
-I hope she doesn’t see me trying to disguise a frown. This Dame has definitely lost her husband.
-You: And why is that, Ma'am?
-Rose: It all started about a week ago.
-Rose: I was waiting for my Georgie to come home as he usually does and... [wait=1] he never made it!
-Rose: I haven’t heard one peep from him and I- I…
-do SignalBus.emit_signal("enable_outside")
-do SignalBus.emit_signal("dialogue_disabled")
+match SignalBus.lady_state
+	when "start"
+		Lady: Hello, sir. Are you the detective for hire? I saw your ad in the journal this week.
+		You: Why of course. What can I do for you today Ma’am?
+		I sit down, gesturing to the chair opposite me.
+		She takes it gingerly, as if she was afraid she would break if she moved too quickly.
+		Already by the look on her face I could tell she was quite hysterical.
+		Lady: Well, my name is Rose Evelyn Williams. I am 37 years old.
+		Rose: And, well… You’re my last resort!
+		I spin around in my chair appearing to look out the window. 
+		I hope she doesn’t see me trying to disguise a frown. This Dame has definitely lost her husband.
+		You: And why is that, Ma'am?
+		Rose: It all started about a week ago.
+		Rose: I was waiting for my Georgie to come home as he usually does and... [wait=1] he never made it!
+		Rose: I haven’t heard one peep from him and I- I…
+		You: It's alright. I'm sure he's okay.
+		I was right about the "what", but not the "who."
+		This was my first case in weeks, and as much as I hated the possibility of telling this woman that her child was indeed gone if I couldn't find him...
+		I absolutely needed the dough.
+		- Help Her
+			Rose: Oh, bless your heart!
+			I thought she was about to faint with excitement.
+			Rose: I heard something about a little boy wandering around downtown the other day, but I havent't had any luck with the shopkeepers.
+			Rose: Perhaps another look might help?
+			She's right. If a little boy were to wander off on his own, the first place he would probably go is a candy shop.
+			I stand up, grabing my hat from its rack.
+			You: We'll be in touch, sweetheart.
+			do SignalBus.lady_state = "help"
+			do SignalBus.emit_signal("enable_outside")
+			do SignalBus.emit_signal("dialogue_disabled")
+		- Decline
+			Rose: Please, please! I'll do anything to get him back!
+			It took everything I had to not let my voice break as I told her.
+			You: I'm sorry. If he's been gone for a week, it's probably best to try to start moving on.
+			She cried out.
+			do SignalBus.lady_state = "decline"
+			do SignalBus.emit_signal("enable_outside")
+			do SignalBus.emit_signal("dialogue_disabled")
+	when "help"
+		Rose: "...Thank you..."
+		do SignalBus.emit_signal("dialogue_disabled")
+	when "decline"
+		*Sob*
+		do SignalBus.emit_signal("dialogue_disabled")
 => END

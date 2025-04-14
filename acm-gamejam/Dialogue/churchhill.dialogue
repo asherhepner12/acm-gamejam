@@ -1,0 +1,16 @@
+~ start
+match SignalBus.churchhill_state
+	when "start"
+		Man: *grumble grumble* kid?
+		Man: Haven't heard of 'im.
+		Man: *grumble grumble*
+		do SignalBus.churchhill_state = "2nd"
+		do SignalBus.emit_signal("dialogue_disabled")
+	else
+		Man: IwbnfouevcmsiehwvudbqvGovernment
+		Man: North of the ammia, abielle, yap
+		Man: When Napoleon led buloingreyawibifatlodenburg and his grand army
+		Man: obeladyntiolignominius
+		Man: we'll defend to the death anyetivjsoyl, aiding eachother like good comrades to the uphcgxotydarsrting
+		do SignalBus.emit_signal("dialogue_disabled")
+=> END

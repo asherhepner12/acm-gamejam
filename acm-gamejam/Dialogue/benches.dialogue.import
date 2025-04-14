@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://dvioxr2a33ce1"
+path="res://.godot/imported/benches.dialogue-4cd4c4b46aa880922e081516316d3306.tres"
+
+[deps]
+
+source_file="res://Dialogue/benches.dialogue"
+dest_files=["res://.godot/imported/benches.dialogue-4cd4c4b46aa880922e081516316d3306.tres"]
+
+[params]
+
+defaults=true

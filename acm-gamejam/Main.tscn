@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://drbhu34jf6a23"]
+[gd_scene load_steps=38 format=3 uid="uid://drbhu34jf6a23"]
 
 [ext_resource type="Texture2D" uid="uid://b7je8wdwjvxu6" path="res://Locations/office/clock8.png" id="1_r0du0"]
 [ext_resource type="Resource" uid="uid://c8cpwo1byqjb4" path="res://Dialogue/monologue.dialogue" id="2_5tuhn"]
@@ -23,17 +23,32 @@
 [ext_resource type="Resource" uid="uid://cod3ani34mh8c" path="res://Dialogue/fan.dialogue" id="19_devvj"]
 [ext_resource type="Resource" uid="uid://cjyo2rd1dy44a" path="res://Dialogue/partner_desk.dialogue" id="20_3b0ty"]
 [ext_resource type="Resource" uid="uid://uciakbxne5kb" path="res://Dialogue/spare_typewriter.dialogue" id="20_bg4s2"]
+[ext_resource type="Resource" uid="uid://bw6fx2bnr37bq" path="res://Dialogue/window.dialogue" id="21_mxvw5"]
+[ext_resource type="Resource" uid="uid://dvioxr2a33ce1" path="res://Dialogue/benches.dialogue" id="22_xrxkg"]
+[ext_resource type="Script" uid="uid://2fnyh6dkxkhk" path="res://NPC.gd" id="26_hri7i"]
+[ext_resource type="Resource" uid="uid://de348se8xj8qv" path="res://Dialogue/churchhill.dialogue" id="27_w3rk5"]
+[ext_resource type="Texture2D" uid="uid://cqq0bb8d1kddy" path="res://Characters/gentleman2.png" id="28_5mvff"]
+[ext_resource type="Texture2D" uid="uid://n6uqq772itfg" path="res://Characters/gentleman1.png" id="29_40n85"]
+[ext_resource type="Resource" uid="uid://h31lwnxc6r68" path="res://Dialogue/bear.dialogue" id="29_gb15f"]
+[ext_resource type="Texture2D" uid="uid://bgylse6cnrde2" path="res://Locations/street/Broadway.png" id="30_gb15f"]
+[ext_resource type="Texture2D" uid="uid://f5g0adqaj4pq" path="res://Locations/street/game_over.png" id="31_sph85"]
+[ext_resource type="Texture2D" uid="uid://b2nj45tar4igu" path="res://Locations/street/game_over_bad.png" id="32_o7g6l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjvhd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2gh4u"]
-size = Vector2(20, 23.1156)
+size = Vector2(21.5791, 22.6588)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sqvbp"]
+radius = 18.2924
+height = 101.238
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oye8v"]
+size = Vector2(145, 358)
 
 [node name="Root" type="Node"]
 
 [node name="Cursor" parent="." instance=ExtResource("3_cm0pq")]
-position = Vector2(1017, 421)
-scale = Vector2(0.803056, 1)
 dialogue_resource = ExtResource("2_5tuhn")
 
 [node name="MovementDetection" type="Node2D" parent="."]
@@ -140,8 +155,7 @@ dialogue_resource = ExtResource("17_5tuhn")
 interact_value = "Clock"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Office/Objects/Clock"]
-position = Vector2(0, -1.45774)
-scale = Vector2(1, 1)
+position = Vector2(0.0531502, -0.650777)
 shape = SubResource("RectangleShape2D_2gh4u")
 
 [node name="Typewriter" type="Area2D" parent="Locations/Office/Objects"]
@@ -156,7 +170,6 @@ interact_value = "Typewriter"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Office/Objects/Typewriter"]
 position = Vector2(0, -1.45774)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2gh4u")
 
 [node name="Fan" type="Area2D" parent="Locations/Office/Objects"]
@@ -171,7 +184,6 @@ interact_value = "Fan"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Office/Objects/Fan"]
 position = Vector2(0, -1.45774)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2gh4u")
 
 [node name="SpareTypewriter" type="Area2D" parent="Locations/Office/Objects"]
@@ -186,8 +198,37 @@ interact_value = "SpareTypewriter"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Office/Objects/SpareTypewriter"]
 position = Vector2(0, -1.45774)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2gh4u")
+
+[node name="Window" type="Area2D" parent="Locations/Office/Objects"]
+visible = false
+position = Vector2(324, -59)
+scale = Vector2(8.23892, 8.14734)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("15_sc1dx")
+dialogue_resource = ExtResource("21_mxvw5")
+interact_value = "Window"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Office/Objects/Window"]
+position = Vector2(13.9776, 33.919)
+shape = SubResource("RectangleShape2D_2gh4u")
+
+[node name="Benches" type="Area2D" parent="Locations/Office/Objects"]
+visible = false
+position = Vector2(370, 146)
+scale = Vector2(4.45262, 2.54432)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("15_sc1dx")
+dialogue_resource = ExtResource("22_xrxkg")
+interact_value = "Window"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Office/Objects/Benches"]
+position = Vector2(4.30279, 117.01)
+rotation = -2.15469
+scale = Vector2(1.01151, 0.787693)
+shape = SubResource("CapsuleShape2D_sqvbp")
 
 [node name="PartnerDesk" type="Area2D" parent="Locations/Office/Objects"]
 visible = false
@@ -200,8 +241,7 @@ dialogue_resource = ExtResource("20_3b0ty")
 interact_value = "PartnerDesk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Office/Objects/PartnerDesk"]
-position = Vector2(0, -1.45774)
-scale = Vector2(1, 1)
+position = Vector2(0, -4.15925)
 shape = SubResource("RectangleShape2D_2gh4u")
 
 [node name="Outside" type="Node2D" parent="Locations"]
@@ -219,3 +259,57 @@ visible = false
 position = Vector2(579, 280)
 scale = Vector2(1.47158, 1.47158)
 texture = ExtResource("14_c2ibq")
+
+[node name="Broadway" type="Sprite2D" parent="Locations/Outside/Backdrops"]
+visible = false
+position = Vector2(589, 310)
+scale = Vector2(1.48, 1)
+texture = ExtResource("30_gb15f")
+
+[node name="GameOver" type="Sprite2D" parent="Locations/Outside/Backdrops"]
+visible = false
+position = Vector2(566, 245)
+scale = Vector2(0.572324, 0.572324)
+texture = ExtResource("31_sph85")
+
+[node name="GameOverBad" type="Sprite2D" parent="Locations/Outside/Backdrops"]
+visible = false
+position = Vector2(579, 269)
+scale = Vector2(0.535872, 0.535872)
+texture = ExtResource("32_o7g6l")
+
+[node name="NPCS" type="Node2D" parent="Locations/Outside"]
+
+[node name="Churchhill" type="Area2D" parent="Locations/Outside/NPCS"]
+visible = false
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("26_hri7i")
+dialogue_resource = ExtResource("27_w3rk5")
+interact_value = "Churchhill"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Outside/NPCS/Churchhill"]
+position = Vector2(246, 343)
+shape = SubResource("RectangleShape2D_oye8v")
+
+[node name="Gentleman2Sprite" type="Sprite2D" parent="Locations/Outside/NPCS/Churchhill/CollisionShape2D"]
+position = Vector2(5.00003, 1)
+scale = Vector2(0.315752, 0.378015)
+texture = ExtResource("28_5mvff")
+
+[node name="Bear" type="Area2D" parent="Locations/Outside/NPCS"]
+visible = false
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("26_hri7i")
+dialogue_resource = ExtResource("29_gb15f")
+interact_value = "Bear"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Outside/NPCS/Bear"]
+position = Vector2(814.5, 411)
+shape = SubResource("RectangleShape2D_oye8v")
+
+[node name="Gentleman1" type="Sprite2D" parent="Locations/Outside/NPCS/Bear/CollisionShape2D"]
+position = Vector2(0.5, 2)
+scale = Vector2(0.874663, 0.915269)
+texture = ExtResource("29_40n85")

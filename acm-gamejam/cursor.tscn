@@ -13,6 +13,7 @@
 [node name="Cursor" type="Node2D"]
 visibility_layer = 1023
 z_index = 6
+scale = Vector2(0.579363, 0.579363)
 script = ExtResource("1_5l68f")
 
 [node name="InteractionArea" type="Area2D" parent="."]
