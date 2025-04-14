@@ -1,0 +1,7 @@
+~ start
+It was a lazy afternoon in the office.
+One that makes you wonder why even bother anymore. Detective work is scarce, and rent always seems to be due before I'm ready to pay it.
+But for all it's worth it has one thing going for it.
+You never know what will come in through the door.
+do SignalBus.emit_signal("dialogue_disabled")
+=> END

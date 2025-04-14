@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+SignalBus="*res://SignalBus.gd"
 
 [dialogue_manager]
 
@@ -82,7 +83,7 @@ back={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/dialogue.dialogue", "res://Dialogue/lady.dialogue", "res://Dialogue/telephone.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/dialogue.dialogue", "res://Dialogue/lady.dialogue", "res://Dialogue/telephone.dialogue", "res://Dialogue/monologue.dialogue")
 
 [layer_names]
 

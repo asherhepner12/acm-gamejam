@@ -1,6 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://drbhu34jf6a23"]
 
 [ext_resource type="Texture2D" uid="uid://b7je8wdwjvxu6" path="res://Locations/office/clock8.png" id="1_r0du0"]
+[ext_resource type="Resource" uid="uid://c8cpwo1byqjb4" path="res://Dialogue/monologue.dialogue" id="2_5tuhn"]
 [ext_resource type="PackedScene" uid="uid://c4c48mstr5b0w" path="res://move_up_detection.tscn" id="2_20pc6"]
 [ext_resource type="Texture2D" uid="uid://y6pdf0ci7yeb" path="res://Locations/office/clock7.png" id="2_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://dyvn3f1y2giad" path="res://woman_1npc.tscn" id="2_r0du0"]
@@ -15,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://6o6l7pumnlhq" path="res://Locations/street/Cityhall.png" id="13_c6i3y"]
 [ext_resource type="Texture2D" uid="uid://cs87fmta2xn35" path="res://Locations/Transition.png" id="13_j4qnp"]
 [ext_resource type="Texture2D" uid="uid://h7n1vo7mlokm" path="res://Locations/street/Wilshire.png" id="14_c2ibq"]
-[ext_resource type="Resource" uid="uid://cp1ito683bqn3" path="res://Dialogue/lady.dialogue" id="14_sc1dx"]
 [ext_resource type="Script" uid="uid://cclqlyhdelgj6" path="res://Object.gd" id="15_sc1dx"]
 [ext_resource type="Resource" uid="uid://bjr6wms6eap88" path="res://Dialogue/telephone.dialogue" id="16_kjvhd"]
 
@@ -26,6 +26,7 @@
 [node name="Cursor" parent="." instance=ExtResource("3_cm0pq")]
 position = Vector2(1017, 421)
 scale = Vector2(0.803056, 1)
+dialogue_resource = ExtResource("2_5tuhn")
 
 [node name="MovementDetection" type="Node2D" parent="."]
 top_level = true
@@ -104,7 +105,6 @@ z_index = 5
 [node name="Woman1NPC" parent="Locations/Office/NPCS" instance=ExtResource("2_r0du0")]
 visible = false
 position = Vector2(1020, 430)
-dialogue_resource = ExtResource("14_sc1dx")
 
 [node name="Objects" type="Node2D" parent="Locations/Office"]
 

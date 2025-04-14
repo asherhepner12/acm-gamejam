@@ -1,6 +1,16 @@
 ~ start
-???: It was a lazy afternoon in the office.
-???: One that makes you wonder why even bother anymore. Detective work is scarce, and rent always seems to be due before I'm ready to pay it.
-???: But for all it's worth it has one thing going for it.
-???: You never know what will come in through the door.
+Lady: Hello, sir. Are you the detective for hire? I saw your ad in the journal this week.
+You: Why of course. What can I do for you today Ma’am?
+I sit down, gesturing to the chair opposite me.
+She takes it gingerly, as if she was afraid she would break if she moved too quickly.
+Already by the look on her face I could tell she was quite hysterical.
+Lady: Well, my name is Rose Evelyn Williams. I am 37 years old.
+Rose: And, well… You’re my last resort!
+I spin around in my chair appearing to look out the window. 
+I hope she doesn’t see me trying to disguise a frown. This Dame has definitely lost her husband.
+You: And why is that, Ma'am?
+Rose: It all started about a week ago.
+Rose: I was waiting for my Georgie to come home as he usually does and... [wait=1] he never made it!
+Rose: I haven’t heard one peep from him and I- I…
+do SignalBus.emit_signal("dialogue_disabled")
 => END

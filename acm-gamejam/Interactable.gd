@@ -1,5 +1,5 @@
 class_name Interactable extends Area2D
-
+signal dialogue_enabled #Does a thing
 @export var interact_label = "label"
 @export var interact_type = "default"
 @export var interact_value = "default"

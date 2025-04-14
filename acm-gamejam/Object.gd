@@ -1,7 +1,7 @@
 extends Interactable
 const Balloon = preload("res://Dialogue/balloon.tscn")
 @export var dialogue_resource: DialogueResource
-@export var dialogue_start: String = "this_is_a_node_title"
+@export var dialogue_start: String = "start"
 
 
 var is_equippable = false
@@ -12,6 +12,7 @@ func _init():
 	interact_label = "object"
 
 func action() -> void:
+	SignalBus.emit_signal("dialogue_enabled",interact_value)
 	match interact_value:
 		"Telephone":
 			var balloon: Node = Balloon.instantiate()

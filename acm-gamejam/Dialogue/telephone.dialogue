@@ -1,11 +1,47 @@
-~ this_is_a_node_title
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => this_is_a_node_title
-- End the conversation => END
-Nathan: For more information see the online documentation.
+~ start
+match SignalBus.telephone_state
+	when "start"
+		do SignalBus.emit_signal("hide_object", "Telephone")
+		...
+		Caller: Astounding. 
+		You: Pardon? 
+		Caller: Two cases in three weeks. I never thought I'd see the day.
+		The voice on the other end is familiar. It’s enough to send shivers down your spine.
+		You: *gulp*
+		Caller: You used to be so spry! Ah, I remember when you still had your wits about you. 
+		You: You know I'm working myself to the bone, Jay. These new cases, they're not like they used to be. 
+		You: Even just doing the paperwork to start 'em is no cinch. and don't even get me started on- 
+		James: Can it. 
+		James: You know how much I love hearing your colorful excuses, but this time I mean it. 
+		James: I need $640 today or you can consider yourself history.
+		You: Now Jay I’m still working on the dough, would you like to talk over lunch?
+		James: I needed the clams yesterday, detective. Rent was two weeks ago. 
+		James: You're out of options. 
+		You: Look, Jay, I swear to you. give me one more week. 
+		You: There's a case I'm workin' on, It's practically already shut itself. 
+		You: After that, I'll send the money right over. 
+		You: Promise. 
+		There is a beat of silence. 
+		I hear grumbling on the other end as I stand there, fingers crossed behind my back. 
+		James: ... 
+		James: Three days. 
+		*Click!* 
+		I set down the receiver with a heavy hand.
+		You: $640. Highway robbery. What kind of doctor does he take me for?
+		But I had bigger problems. Where was I going to come up with that kind of dough?
+		There was no open and shut case, and there hadn’t been for weeks. 
+		My career seemed to be coming to a close, and all I could do was take a back seat as I watched it burn to the ground. 
+		
+		That’s exactly when she walked in.
+		do SignalBus.telephone_state = "end call"
+
+		do SignalBus.emit_signal("show_npc", "Woman")
+		do SignalBus.emit_signal("dialogue_disabled")
+	else
+		...
+		There is no one on the other line.
+		do SignalBus.emit_signal("dialogue_disabled")
+
+
+do SignalBus.emit_signal("dialogue_disabled")
 => END

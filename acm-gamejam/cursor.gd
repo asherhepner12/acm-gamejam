@@ -1,5 +1,7 @@
 extends Node2D
-
+const Balloon = preload("res://Dialogue/balloon.tscn")
+@export var dialogue_resource: DialogueResource
+@export var dialogue_start: String = "start"
 @onready var all_interactions = []
 var inventory = []
 var location_class = load("res://Location.gd")
@@ -9,6 +11,16 @@ var location_node = location_node_class.new()
 var location_list = [null,null,null,null,null,null,null,null,null,null]
 var location_list_index = 0
 func _ready():
+	#SignalBus Connections
+	SignalBus.connect("dialogue_enabled", _on_dialogue_enabled)
+	SignalBus.connect("dialogue_disabled", _on_dialogue_disabled)
+	SignalBus.connect("show_object", _on_show_object)
+	SignalBus.connect("hide_object", _on_hide_object)
+	SignalBus.connect("show_npc", _on_show_npc)
+	SignalBus.connect("hide_npc", _on_hide_npc)
+	
+	#Intro monologue
+	DialogueManager.show_dialogue_balloon(dialogue_resource,dialogue_start)
 	update_interactions()
 	location_setup()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -73,39 +85,87 @@ func execute_interaction():
 				current_interaction.action()
 				if current_interaction.is_equippable == true:
 					inventory.add(current_interaction)
+					
+func _on_dialogue_enabled(exception):
+	print("Dialogue Started")
+	$"../MovementDetection/ForwardDetection".visible = false
+	$"../MovementDetection/BackDetection".visible = false
+	$"../MovementDetection/LeftDetection".visible = false
+	$"../MovementDetection/RightDetection".visible = false
+	hide_values(location_node, false, exception)
 
+func _on_dialogue_disabled():
+	print("Dialogue Ended")
+	enable_values()
+	
+func _on_show_object(object_name):
+	for i in range (0,10):
+		if location_node.objects[i] != null:
+			if location_node.objects[i].interact_value == object_name:
+				location_node.objects[i].available = true
+				location_node.objects[i].visible = true
+		
+func _on_hide_object(object_name):
+	for i in range (0,10):
+		if location_node.objects[i] != null:
+			if location_node.objects[i].interact_value == object_name:
+				location_node.objects[i].available = false
+				location_node.objects[i].visible = false
+
+func _on_show_npc(npc_name):
+	for i in range (0,10):
+		if location_node.npcs[i] != null:
+			if location_node.npcs[i].interact_value == npc_name:
+				location_node.npcs[i].available = true
+				location_node.npcs[i].visible = true
+				
+func _on_hide_npc(npc_name):
+	for i in range (0,10):
+		if location_node.npcs[i] != null:
+			if location_node.npcs[i].interact_value == npc_name:
+				location_node.npcs[i].available = false
+				location_node.npcs[i].visible = false
 			
 func update_location(direction):
 	#Process depending on direction chosen
 	match direction:
 		"forward":
 			if (location_node.forward != null):
-				hide_values(location_node)
+				hide_values(location_node, true, "none")
 				location_node = location_node.forward
 				print("Went forward!")
 			else:
 				print("Cannot go forward!")
 		"back":
 			if(location_node.back != null):
-				hide_values(location_node)
+				hide_values(location_node, true, "none")
 				location_node = location_node.back
 				print("Went back!")
 			else:
 				print("Cannot go back!")
 		"left":
 			if(location_node.left != null):
-				hide_values(location_node)
+				hide_values(location_node, true, "none")
 				location_node = location_node.left
 				print("Went left!")
 			else:
 				print("Cannot go left!")
 		"right":	
 			if(location_node.right != null):
-				hide_values(location_node)
+				hide_values(location_node, true, "none")
 				location_node = location_node.right
 				print("Went right!")
 			else:
 				print("Cannot go right!")
+	enable_values()
+	#If the location you are moving to is a transition point
+	if location_node.transition != -1: 
+		print("Went to " + location_list[location_node.transition].title+"!")
+		hide_values(location_node, true, "none")
+		location_node = location_list[location_node.transition].head
+		update_location(location_node)
+		
+func enable_values():
 	location_node.backdrop.visible = true
 	#Enable NPCs/Objects in the location
 	for i in range (0,10):
@@ -122,19 +182,14 @@ func update_location(direction):
 		$"../MovementDetection/LeftDetection".visible = true
 	if location_node.right != null and location_node.right.accessible == true:
 		$"../MovementDetection/RightDetection".visible = true
-	#If the location you are moving to is a transition point
-	if location_node.transition != -1: 
-		print("Went to " + location_list[location_node.transition].title+"!")
-		hide_values(location_node)
-		location_node = location_list[location_node.transition].head
-		update_location(location_node)
 		
-func hide_values(location_node):
-	location_node.backdrop.visible = false
+func hide_values(location_node, hide_bg, exception):
+	if hide_bg == true:
+		location_node.backdrop.visible = false
 	for i in range (0,10):
-		if location_node.npcs[i] != null:
+		if location_node.npcs[i] != null and location_node.npcs[i].interact_value != exception:
 			location_node.npcs[i].visible = false
-		if location_node.objects[i] != null:
+		if location_node.objects[i] != null and location_node.objects[i].interact_value != exception:
 			location_node.objects[i].visible = false
 	$"../MovementDetection/ForwardDetection".visible = false
 	$"../MovementDetection/BackDetection".visible = false
