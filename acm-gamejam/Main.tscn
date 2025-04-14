@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://drbhu34jf6a23"]
+[gd_scene load_steps=42 format=3 uid="uid://drbhu34jf6a23"]
 
 [ext_resource type="Texture2D" uid="uid://b7je8wdwjvxu6" path="res://Locations/office/clock8.png" id="1_r0du0"]
 [ext_resource type="Resource" uid="uid://c8cpwo1byqjb4" path="res://Dialogue/monologue.dialogue" id="2_5tuhn"]
@@ -9,10 +9,14 @@
 [ext_resource type="Script" uid="uid://taf0uvur2i37" path="res://MovementArea.gd" id="3_c6i3y"]
 [ext_resource type="PackedScene" uid="uid://b030adkqusqdt" path="res://cursor.tscn" id="3_cm0pq"]
 [ext_resource type="Texture2D" uid="uid://ua7xe35vyy35" path="res://Locations/office/clock4.png" id="3_lgr22"]
+[ext_resource type="AudioStream" uid="uid://dicct47n32sxo" path="res://[Mr Hall’s Coffee Shop Jaz] Electric Espresso.mp3" id="3_sph85"]
 [ext_resource type="PackedScene" uid="uid://b8irqvvdmgkt7" path="res://move_right_detection.tscn" id="4_c6i3y"]
 [ext_resource type="Texture2D" uid="uid://dmkk6ugkulafb" path="res://Locations/office/clock6.png" id="4_trn2v"]
+[ext_resource type="AudioStream" uid="uid://bmdoi28iniun0" path="res://wack.mp3" id="4_vi5kq"]
 [ext_resource type="Texture2D" uid="uid://ece3kp6it1u0" path="res://Locations/office/clock5.png" id="5_03owx"]
+[ext_resource type="AudioStream" uid="uid://cgbxfakial4ek" path="res://bash.mp3" id="5_5mkgo"]
 [ext_resource type="PackedScene" uid="uid://napgndb76r14" path="res://move_left_detection.tscn" id="5_c2ibq"]
+[ext_resource type="AudioStream" uid="uid://cild0dcurhqyc" path="res://[Every Sound] Plate Dial Old Telephone Ringing Sound.mp3" id="6_5mkgo"]
 [ext_resource type="Texture2D" uid="uid://6o6l7pumnlhq" path="res://Locations/street/Cityhall.png" id="13_c6i3y"]
 [ext_resource type="Texture2D" uid="uid://cs87fmta2xn35" path="res://Locations/Transition.png" id="13_j4qnp"]
 [ext_resource type="Texture2D" uid="uid://h7n1vo7mlokm" path="res://Locations/street/Wilshire.png" id="14_c2ibq"]
@@ -50,6 +54,20 @@ size = Vector2(145, 358)
 
 [node name="Cursor" parent="." instance=ExtResource("3_cm0pq")]
 dialogue_resource = ExtResource("2_5tuhn")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Cursor"]
+scale = Vector2(1.72603, 1.72603)
+stream = ExtResource("3_sph85")
+
+[node name="Whack" type="AudioStreamPlayer2D" parent="Cursor"]
+stream = ExtResource("4_vi5kq")
+
+[node name="Bash" type="AudioStreamPlayer2D" parent="Cursor"]
+stream = ExtResource("5_5mkgo")
+
+[node name="Phone" type="AudioStreamPlayer2D" parent="Cursor"]
+scale = Vector2(1, 1)
+stream = ExtResource("6_5mkgo")
 
 [node name="MovementDetection" type="Node2D" parent="."]
 top_level = true

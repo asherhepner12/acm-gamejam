@@ -13,8 +13,10 @@ if SignalBus.bear_state == "start"
 			He quickly turns and tries to walk away, averting his eyes.
 			I know better.
 			I grab him by the arm and whip him around, catching him by suprise.
+			do SignalBus.emit_signal("whack")
 			*Whack!*
 			A crack to the jaw with my right hook.
+			do SignalBus.emit_signal("bash")
 			*Bash!*
 			Right on his humongously large nose.
 			He drops like a rock, and his fedora falls to the wayside.

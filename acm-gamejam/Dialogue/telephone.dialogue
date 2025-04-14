@@ -2,6 +2,7 @@
 match SignalBus.telephone_state
 	when "start"
 		do SignalBus.emit_signal("hide_object", "Telephone")
+		do SignalBus.emit_signal("phone")
 		...
 		Caller: Astounding. 
 		You: Pardon? 

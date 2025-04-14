@@ -5,6 +5,10 @@ signal dialogue_disabled
 signal game_won(ingame)
 signal game_over(ingame)
 
+signal whack
+signal bash
+signal phone
+
 signal hide_object(object_name)
 signal show_object(object_name)
 

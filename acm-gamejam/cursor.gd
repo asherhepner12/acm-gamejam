@@ -22,6 +22,11 @@ func _ready():
 	SignalBus.connect("enable_outside", _on_enable_outside)
 	SignalBus.connect("game_won", _on_game_won)
 	SignalBus.connect("game_over", _on_game_over)
+	SignalBus.connect("whack", _on_whack)
+	SignalBus.connect("bash", _on_bash)
+	SignalBus.connect("phone", _on_phone)
+	$AudioStreamPlayer2D.play()
+	$AudioStreamPlayer2D.connect("finished", _on_song_finished)
 	if FileAccess.file_exists("user://my_data.txt"):
 		var file = FileAccess.open("user://my_data.txt", FileAccess.READ)
 		line = file.get_line()
@@ -30,7 +35,6 @@ func _ready():
 
 	
 	#Intro monologue
-	
 	_on_dialogue_enabled("none")
 	update_interactions()
 	location_setup()
@@ -239,8 +243,15 @@ func _on_game_over(ingame):
 	$"../Locations/Outside/Backdrops/Broadway".visible = true
 	$"../Locations/Outside/Backdrops/GameOverBad".visible = true
 	
-	
+func _on_song_finished():
+	$AudioStreamPlayer2D.play()
 
+func _on_whack():
+	$Whack.play()
+func _on_bash():
+	$Bash.play()
+func _on_phone():
+	$Phone.play()
 func location_setup():
 	#Create map of Outside
 	location_node.backdrop = $"../Locations/Outside/Backdrops/CityHall"

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cild0dcurhqyc"
+path="res://.godot/imported/[Every Sound] Plate Dial Old Telephone Ringing Sound.mp3-a24c82b13202905d64e9ba9af4b406c9.mp3str"
+
+[deps]
+
+source_file="res://[Every Sound] Plate Dial Old Telephone Ringing Sound.mp3"
+dest_files=["res://.godot/imported/[Every Sound] Plate Dial Old Telephone Ringing Sound.mp3-a24c82b13202905d64e9ba9af4b406c9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

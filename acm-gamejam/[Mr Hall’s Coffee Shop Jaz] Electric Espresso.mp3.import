@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dicct47n32sxo"
+path="res://.godot/imported/[Mr Hall’s Coffee Shop Jaz] Electric Espresso.mp3-bbaae386a3170d06c811380987982546.mp3str"
+
+[deps]
+
+source_file="res://[Mr Hall’s Coffee Shop Jaz] Electric Espresso.mp3"
+dest_files=["res://.godot/imported/[Mr Hall’s Coffee Shop Jaz] Electric Espresso.mp3-bbaae386a3170d06c811380987982546.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
