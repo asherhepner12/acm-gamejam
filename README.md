@@ -2,7 +2,7 @@
 A point and click detective game where you only have one more shot at solving a mystery before your once thriving agency goes belly-up.
 
 
-#Credits
+# Credits
 Made in Godot by Asher Hepner and Benjamin Grover for the 2025 ACM Game Jam.
 Code, Dialogue, Assets - Asher Hepner
 Dialogue, Assets - Benjamin Grover
