@@ -1,0 +1,6 @@
+~ start
+My everyday typewriter, the "Underwood Master". 
+I got it for a pretty penny back in '37, and she's held up pretty well so far.
+The "R" key does require some persuasion sometimes though.
+do SignalBus.emit_signal("dialogue_disabled")
+=> END

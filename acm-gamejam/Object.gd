@@ -12,9 +12,7 @@ func _init():
 	interact_label = "object"
 
 func action() -> void:
-	SignalBus.emit_signal("dialogue_enabled",interact_value)
-	match interact_value:
-		"Telephone":
-			var balloon: Node = Balloon.instantiate()
-			get_tree().current_scene.add_child(balloon)
-			balloon.start(dialogue_resource, dialogue_start)
+	SignalBus.emit_signal("dialogue_enabled","none")
+	var balloon: Node = Balloon.instantiate()
+	get_tree().current_scene.add_child(balloon)
+	balloon.start(dialogue_resource, dialogue_start)

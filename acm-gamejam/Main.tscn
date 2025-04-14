@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://drbhu34jf6a23"]
+[gd_scene load_steps=26 format=3 uid="uid://drbhu34jf6a23"]
 
 [ext_resource type="Texture2D" uid="uid://b7je8wdwjvxu6" path="res://Locations/office/clock8.png" id="1_r0du0"]
 [ext_resource type="Resource" uid="uid://c8cpwo1byqjb4" path="res://Dialogue/monologue.dialogue" id="2_5tuhn"]
@@ -18,8 +18,16 @@
 [ext_resource type="Texture2D" uid="uid://h7n1vo7mlokm" path="res://Locations/street/Wilshire.png" id="14_c2ibq"]
 [ext_resource type="Script" uid="uid://cclqlyhdelgj6" path="res://Object.gd" id="15_sc1dx"]
 [ext_resource type="Resource" uid="uid://bjr6wms6eap88" path="res://Dialogue/telephone.dialogue" id="16_kjvhd"]
+[ext_resource type="Resource" uid="uid://hughhr5sc5xv" path="res://Dialogue/clock.dialogue" id="17_5tuhn"]
+[ext_resource type="Resource" uid="uid://1n1d287lk5ru" path="res://Dialogue/typewriter.dialogue" id="18_2gh4u"]
+[ext_resource type="Resource" uid="uid://cod3ani34mh8c" path="res://Dialogue/fan.dialogue" id="19_devvj"]
+[ext_resource type="Resource" uid="uid://cjyo2rd1dy44a" path="res://Dialogue/partner_desk.dialogue" id="20_3b0ty"]
+[ext_resource type="Resource" uid="uid://uciakbxne5kb" path="res://Dialogue/spare_typewriter.dialogue" id="20_bg4s2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjvhd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gh4u"]
+size = Vector2(20, 23.1156)
 
 [node name="Root" type="Node"]
 
@@ -120,6 +128,81 @@ interact_value = "Telephone"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Office/Objects/Telephone"]
 shape = SubResource("CapsuleShape2D_kjvhd")
+
+[node name="Clock" type="Area2D" parent="Locations/Office/Objects"]
+visible = false
+position = Vector2(412, 250)
+scale = Vector2(9.40724, 19.2078)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("15_sc1dx")
+dialogue_resource = ExtResource("17_5tuhn")
+interact_value = "Clock"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Office/Objects/Clock"]
+position = Vector2(0, -1.45774)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_2gh4u")
+
+[node name="Typewriter" type="Area2D" parent="Locations/Office/Objects"]
+visible = false
+position = Vector2(827, 325)
+scale = Vector2(10.0352, 4.7063)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("15_sc1dx")
+dialogue_resource = ExtResource("18_2gh4u")
+interact_value = "Typewriter"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Office/Objects/Typewriter"]
+position = Vector2(0, -1.45774)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_2gh4u")
+
+[node name="Fan" type="Area2D" parent="Locations/Office/Objects"]
+visible = false
+position = Vector2(603, 298)
+scale = Vector2(3.85376, 4.20206)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("15_sc1dx")
+dialogue_resource = ExtResource("19_devvj")
+interact_value = "Fan"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Office/Objects/Fan"]
+position = Vector2(0, -1.45774)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_2gh4u")
+
+[node name="SpareTypewriter" type="Area2D" parent="Locations/Office/Objects"]
+visible = false
+position = Vector2(787, 267)
+scale = Vector2(4.45262, 2.54432)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("15_sc1dx")
+dialogue_resource = ExtResource("20_bg4s2")
+interact_value = "SpareTypewriter"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Office/Objects/SpareTypewriter"]
+position = Vector2(0, -1.45774)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_2gh4u")
+
+[node name="PartnerDesk" type="Area2D" parent="Locations/Office/Objects"]
+visible = false
+position = Vector2(903, 489)
+scale = Vector2(25.2335, 5.4392)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("15_sc1dx")
+dialogue_resource = ExtResource("20_3b0ty")
+interact_value = "PartnerDesk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Locations/Office/Objects/PartnerDesk"]
+position = Vector2(0, -1.45774)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_2gh4u")
 
 [node name="Outside" type="Node2D" parent="Locations"]
 

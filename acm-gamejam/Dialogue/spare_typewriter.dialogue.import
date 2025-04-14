@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://uciakbxne5kb"
+path="res://.godot/imported/spare_typewriter.dialogue-977cdf998aa11d23574505fe89fcee2f.tres"
+
+[deps]
+
+source_file="res://Dialogue/spare_typewriter.dialogue"
+dest_files=["res://.godot/imported/spare_typewriter.dialogue-977cdf998aa11d23574505fe89fcee2f.tres"]
+
+[params]
+
+defaults=true

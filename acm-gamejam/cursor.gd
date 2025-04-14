@@ -18,9 +18,11 @@ func _ready():
 	SignalBus.connect("hide_object", _on_hide_object)
 	SignalBus.connect("show_npc", _on_show_npc)
 	SignalBus.connect("hide_npc", _on_hide_npc)
+	SignalBus.connect("enable_outside", _on_enable_outside)
 	
 	#Intro monologue
 	DialogueManager.show_dialogue_balloon(dialogue_resource,dialogue_start)
+	_on_dialogue_enabled("none")
 	update_interactions()
 	location_setup()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -195,6 +197,8 @@ func hide_values(location_node, hide_bg, exception):
 	$"../MovementDetection/BackDetection".visible = false
 	$"../MovementDetection/LeftDetection".visible = false
 	$"../MovementDetection/RightDetection".visible = false
+func _on_enable_outside():
+	location_node.back.back.left.accessible = true
 
 func location_setup():
 	#Create map of Outside
@@ -211,8 +215,13 @@ func location_setup():
 	location_node.npcs[0] = $"../Locations/Office/NPCS/Woman1NPC"
 	location_node.npcs[0].available = false
 	location_node.objects[0] = $"../Locations/Office/Objects/Telephone"
+	location_node.objects[1] = $"../Locations/Office/Objects/Clock"
+	location_node.objects[2] = $"../Locations/Office/Objects/Typewriter"
 	location_node.back = location_node_class.new()
 	location_node.back.backdrop = $"../Locations/Office/Backdrops/IntroRoomBack"
+	location_node.back.objects[0] = $"../Locations/Office/Objects/Fan"
+	location_node.back.objects[1] = $"../Locations/Office/Objects/PartnerDesk"
+	location_node.back.objects[2] = $"../Locations/Office/Objects/SpareTypewriter"
 	location_node.back.forward = location_node
 	location_node.back.back = location_node_class.new()
 	location_node.back.back.backdrop = $"../Locations/Office/Backdrops/Entryway"

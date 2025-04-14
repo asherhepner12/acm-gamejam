@@ -1,0 +1,6 @@
+~ start
+My Grandfather's grandfather clock.
+It chimes every hour, reminding me of all the time I've spent wasting away at my desk.
+It's a great conversation starter, however.
+do SignalBus.emit_signal("dialogue_disabled")
+=> END

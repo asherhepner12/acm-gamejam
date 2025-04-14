@@ -1,0 +1,5 @@
+~ start
+A spare typewriter.
+It's been up there so long the ink ribbon has run dry.
+do SignalBus.emit_signal("dialogue_disabled")
+=> END

@@ -1,0 +1,6 @@
+~ start
+It's my old partner's desk.
+I haven't touched it in years, ever since he...
+Well.
+do SignalBus.emit_signal("dialogue_disabled")
+=> END

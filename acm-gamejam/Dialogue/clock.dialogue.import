@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://hughhr5sc5xv"
+path="res://.godot/imported/clock.dialogue-9f5a24eb38c8537189a5e0b7d3df936f.tres"
+
+[deps]
+
+source_file="res://Dialogue/clock.dialogue"
+dest_files=["res://.godot/imported/clock.dialogue-9f5a24eb38c8537189a5e0b7d3df936f.tres"]
+
+[params]
+
+defaults=true

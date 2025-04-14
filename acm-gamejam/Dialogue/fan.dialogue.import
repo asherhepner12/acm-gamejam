@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://cod3ani34mh8c"
+path="res://.godot/imported/fan.dialogue-f04fe0fdbb07da2a0a00af9244d5e2da.tres"
+
+[deps]
+
+source_file="res://Dialogue/fan.dialogue"
+dest_files=["res://.godot/imported/fan.dialogue-f04fe0fdbb07da2a0a00af9244d5e2da.tres"]
+
+[params]
+
+defaults=true

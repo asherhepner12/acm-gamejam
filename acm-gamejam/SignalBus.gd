@@ -8,4 +8,6 @@ signal show_object(object_name)
 signal hide_npc(npc_name)
 signal show_npc(npc_name)
 
+signal enable_outside
+
 var telephone_state: String = "start"

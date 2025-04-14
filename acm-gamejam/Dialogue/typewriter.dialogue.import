@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://1n1d287lk5ru"
+path="res://.godot/imported/typewriter.dialogue-243ac67bb7ba4de03b07ce8ffdc790e1.tres"
+
+[deps]
+
+source_file="res://Dialogue/typewriter.dialogue"
+dest_files=["res://.godot/imported/typewriter.dialogue-243ac67bb7ba4de03b07ce8ffdc790e1.tres"]
+
+[params]
+
+defaults=true

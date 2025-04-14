@@ -1,0 +1,5 @@
+~ start
+It's broken.
+I really should get it replaced, the stuffiness drives clients away on occasion.
+do SignalBus.emit_signal("dialogue_disabled")
+=> END

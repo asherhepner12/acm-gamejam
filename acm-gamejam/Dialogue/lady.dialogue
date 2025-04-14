@@ -12,5 +12,6 @@ You: And why is that, Ma'am?
 Rose: It all started about a week ago.
 Rose: I was waiting for my Georgie to come home as he usually does and... [wait=1] he never made it!
 Rose: I haven’t heard one peep from him and I- I…
+do SignalBus.emit_signal("enable_outside")
 do SignalBus.emit_signal("dialogue_disabled")
 => END
