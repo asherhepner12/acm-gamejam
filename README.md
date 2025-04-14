@@ -3,10 +3,11 @@ A point and click detective game where you only have one more shot at solving a 
 
 
 # Credits
-Made in Godot by Asher Hepner and Benjamin Grover for the 2025 ACM Game Jam.
-Code, Dialogue, Assets - Asher Hepner
-Dialogue, Assets - Benjamin Grover
-SFX - SFX Flow, Every Sound
-Music - Mr Hall’s Coffee Shop Jazz Ensemble: Electric Espresso
-Backgrounds - https://spiralatlas.itch.io/1900s-office-visual-novel-backgrounds, Google Images
-Characters - Google Images
+**Made in Godot by Asher Hepner and Benjamin Grover for the 2025 ACM Game Jam.**
+
+**Code, Dialogue, Assets** - Asher Hepner\
+**Dialogue, Assets** - Benjamin Grover\
+**SFX** - SFX Flow, Every Sound\
+**Music** - Mr Hall’s Coffee Shop Jazz Ensemble: Electric Espresso\
+**Backgrounds** - https://spiralatlas.itch.io/1900s-office-visual-novel-backgrounds, Google Images\
+**Characters** - Google Images
