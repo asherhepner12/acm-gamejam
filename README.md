@@ -1,6 +1,9 @@
 # One Last Case
 A point and click detective game where you only have one more shot at solving a mystery before your once thriving agency goes belly-up.
 
+# How to Play
+Download the .exe file from the Executable folder.
+Only works on Windows.
 
 # Credits
 **Made in Godot by Asher Hepner and Benjamin Grover for the 2025 ACM Game Jam.**
