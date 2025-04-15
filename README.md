@@ -2,7 +2,7 @@
 A point and click detective game where you only have one more shot at solving a mystery before your once thriving agency goes belly-up.
 
 # How to Play
-[Download from Itch.io](https://bixbyte.itch.io/one-last-case)
+[Download from Itch.io](https://bixbyte.itch.io/one-last-case)\
 Only works on Windows.
 
 # Credits
